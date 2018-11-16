@@ -63,3 +63,13 @@ body {
     flex-shrink: 1;
     flex-basis: 0;
 }
+
+input {
+    min-width: 0;
+}
+button {
+    min-width: 0;
+    padding: 2px 8px 2px 8px;
+    border-width: 1px;
+    border-radius: 2px;
+}
