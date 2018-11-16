@@ -1,0 +1,65 @@
+
+body {
+    margin: 0;
+}
+
+#page {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.centeredcol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.centeredrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.area {
+    width: 100%;
+}
+
+#area_top {
+    background-color: white;
+    height: 10%;
+}
+
+#area_nav {
+    background-color: ghostwhite;
+}
+
+#area_folders {
+    background-color: white;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#area_files {
+    background-color: white;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+#area_bottom {
+    margin-top: auto;
+    background-color: ghostwhite;
+    height: 10%;
+}
+
+#area_top h1 {
+    text-align: center;
+    font-size: 24pt;
+    margin: 0;
+}
+
+#area_bottom button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
