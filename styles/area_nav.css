@@ -1,0 +1,19 @@
+
+#path span::after {
+    content: " \\";
+}
+
+#nav_form.centeredrow input {
+    flex-grow: 1;
+}
+
+#nav_path {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    
+}
+#nav_path button {
+    margin-right: 10px;
+}
