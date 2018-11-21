@@ -8,21 +8,6 @@
         <link rel="stylesheet" type="text/css" href="styles/area_files.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <style>
-
-/* div.button {
-    border-style: solid;
-    border-width: 1px;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-left: 2px;
-    padding-right: 2px;
-} */
-
-        </style>
     </head>
     <body>
         <div id="page" class="centeredcol">
@@ -32,7 +17,7 @@
             
             <div id="area_nav" class="area centeredcol">
                 <div id="nav_path">
-                    <button>&lt;</button>
+                    <button id="test">&lt;</button>
                     <div id="path">
                         <span>INSA</span>
                         <span>3IF</span>
@@ -40,31 +25,52 @@
                     </div>
                 </div>
                 <div id="nav_form" class="centeredrow">
-                    <input id="tags" type="tags" name="tags" placeholder="Tags">
-                    <button>X</button>
+                    Matrices
                 </div>
             </div>
             
-            <div id="area_files" class="area">
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-            </div>
+
+            <iframe id="pdf-reader" name="PDFReader" src="others/teilen.pdf" style="height:100%; width:100%;"></iframe>
             
-            <div id="area_bottom" class="area centeredrow">
-                <button class="btn btn-primary">Cours</button>
-                <button class="btn btn-primary">Exercices</button>
-                <button class="btn btn-primary">Corrigés</button>
+            <div id="bottom-bar" >
+                <table style="width:100%;" >
+                    <tr>
+                        <td class="text-center" style="width:33%;"><img src="images/like.svg" style="width:30%;"/></td>
+                        <td class="text-left" style="width:33%;"><img src="images/dislike.svg" style="width:30%;"/></td>
+                        <td class="text-right" style="width:34%;"><img src="images/chat.svg" style="width:30%;"/></td>
+                    </tr>
+                    <tr><td colspan="3">Commentaire :</td></tr>
+                    <tr>
+                        <td colspan="3"><textarea id="comment" class="form-control" ></textarea></td>
+                    </tr>
+                </table>
             </div>
+
         </div>
-        <!-- <script type="text/javascript">
-            ready(init);
-        </script> -->
+        <script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+
+                $("#pdf-reader").load(function(){
+
+        $(this).contents().on("mousedown, mouseup, click", function(){
+
+            console.log("Click detected inside iframe.");
+
+        });
+
+    });
+
+            $("#bottom-bar").on("click", function(event){
+//console.log("dsqds");
+                if( $("#bottom-bar").is(":visible") )
+                    $("#bottom-bar").hide();
+                else
+                    $("#bottom-bar").show();
+            });
+
+});
+            
+        </script>
     </body>
 </html>
