@@ -22,6 +22,11 @@
     max-height: 100%;
 }
 
+.file .icon {
+    background-image: url("images/pdf.svg");
+    border-style: none;
+}
+
         </style>
     </head>
     <body>
@@ -59,13 +64,14 @@
             </div>
             
             <div id="area_bottom" class="area centeredrow">
-                <button class="btn btn-primary">Cours</button>
-                <button class="btn btn-primary">Fiches</button>
-                <button class="btn btn-primary">Exercices</button>
-                <button class="btn btn-primary">Annales</button>
+                <button class="btn btn-primary" onclick="tab(0);">Cours</button>
+                <button class="btn btn-primary" onclick="tab(1);">Fiches</button>
+                <button class="btn btn-primary" onclick="tab(2);">Exercices</button>
+                <button class="btn btn-primary" onclick="tab(3);">Annales</button>
             </div>
         </div>
         <script type="text/javascript">
+            var filter = getUrlParameter("filter");
             var dept = getUrlParameter("dept") || "3IF";
             var subject = getUrlParameter("subject") || "CMSI";
             document.getElementById("path_subject").children[0].innerText = subject;
@@ -73,12 +79,53 @@
             document.getElementById("path_dept").children[0].href = "nav_dept.html?dept=" + dept;
             document.getElementById("nav_path").children[0].href = "nav_dept.html?dept=" + dept;
             
-            function init() {
-                $("div.folder").each( function() {
+            function gen(cat,hs,n) {
+                var genidx = 0;
+                $(".file .infos").each( function() {
+                    var len = cat.length-2;
+                    var nom = cat[genidx > len ? len+1 : genidx] + (genidx > len ? genidx - len : "");
+                    var diff = ["Facile", "Moyen", "Difficile"][genidx % 3];
+                    
+                    genidx++;
+                    var hash = "";
+                    for (var i=0; i<hs.length; i++) {
+                        if (genidx % (i+2) == 0) hash += "#" + hs[i] + " ";
+                    }
+                    
                     var item = $(this)[0];
-                    var resname = item.children[0].innerText;
-                    item.onclick = function() {window.location = "ressource_viewer.html?dept=" + dept + "&subject=" + encodeURIComponent(subject)};
+                    item.innerHTML = nom + "<br/><span style=\"font-size:smaller;\">" + diff + "<br/>" + hash + "</span>";
+                    
+                    item.parentElement.style = (genidx > n ? "display:none;" : "display:flex;");
                 });
+            }
+            
+            function tab(i) {
+                document.getElementById("area_files").scrollTop = 0;
+                
+                var hs = ["calcul", "matrices", "matriciel", "produit", "division"];
+                for (var j=0; j<i; j++) hs.push(hs.shift());
+                
+                var cat = ["Fichier "];
+                switch (i) {
+                    case 0: cat = ["Les Matrices", "Le Calcul", "L'Algèbre", "Cours p."]; break;
+                    case 1: cat = ["Résumé de cours", "Formulaire", "Fiche n°"]; break;
+                    case 2: cat = ["Exerice n°"]; break;
+                    case 3: cat = ["Sujet de 201"]; break;
+                }
+                
+                return gen(cat, hs, [10,2,4,6][i]);
+            }
+            
+            function init() {
+                $("div.file").each( function() {
+                    var item = $(this)[0];
+                    item.onclick = function() {
+                        var resname = item.children[1].innerText.split("\n")[0];
+                        window.location = "ressource_viewer.html?dept=" + dept + "&subject=" + encodeURIComponent(subject) + "&filter=" + filter + "&resname=" + encodeURIComponent(resname);
+                    };
+                });
+                
+                tab(0);
             }
             if (window.init) ready(init);
         </script>

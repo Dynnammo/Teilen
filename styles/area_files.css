@@ -13,6 +13,6 @@
     border-radius: 5px;
     margin-right: 10px;
 }
-.file .infos::after {
-    content: "Fichier";
+.file .infos {
+    line-height: 1.2;
 }
