@@ -28,6 +28,9 @@ function () {
         case "forgot":
             message = "Un lien de réinitialisation de mot de passe vous a été envoyé par email.";
         break;
+        case "uplded":
+            message = "Le fichier a bien été mis en ligne !";
+        break;
     }
     
     if (message.length > 0) // alert(message);

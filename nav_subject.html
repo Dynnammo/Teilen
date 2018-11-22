@@ -34,7 +34,7 @@
             </div>
             
             <div id="area_files" class="area">
-                <span id="upload"><a href="upload1.html">⇧</a></span>
+                <span id="upload"><a href="upload.html">↥</a></span>
                 <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
                 <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
                 <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
@@ -133,11 +133,16 @@
                 
                 tab(0);
                 
+                var path = document.getElementById("path").innerText.replace(/\ /g, " / ");
+                var params = window.location.search.replace("?","");
+                document.getElementById("upload").children[0].href += "?path=" + encodeURIComponent(path) + "&params=" + encodeURIComponent(params.replace(/&/g, "!"));
+                
                 $("a").each( function() {
                     var item = $(this)[0];
                     item.href += (item.href.includes("?") ? "&" : "?") + "filter=" + filter;
                 });
             }
+            
             if (window.init) ready(init);
         </script>
     </body>

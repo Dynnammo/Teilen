@@ -61,5 +61,6 @@
 
 .file .icon {
     background-image: url("../images/pdf.svg");
+    background-repeat: no-repeat;
     border-style: none;
 }
