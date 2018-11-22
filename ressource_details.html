@@ -10,6 +10,11 @@
         <style>
 
 body {
+    margin: 0;
+    min-height: 100vh;
+    border: black 2px solid;
+    border-radius: 5px;
+    
     line-height: 1.3;
 }
 
@@ -26,77 +31,79 @@ body {
         </style>
     </head>
     <body style="padding:5%;">
-<div id="close_div" style="cursor:pointer;" onclick="window.history.back();" >
-<img src="images/cancel.svg" alt="X"/>
-</div>
-	    <div id="header" class="text-primary text-left clearfix" style="margin-bottom:5%;">
-			<div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/pdf.svg" /></div>
-			<div class="d-inline"><div id="resname">Matrices</div><div>15/03/2017</div></div>
-		</div>
+        <div id="close_div" style="cursor:pointer;" onclick="window.history.back();">
+            <img src="images/cancel.svg" alt="X"/>
+        </div>
+        
+        <div id="header" class="text-primary text-left clearfix" style="margin-bottom:5%;">
+            <div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/pdf.svg" /></div>
+            <div class="d-inline"><div id="resname">Matrices</div><div>15/03/2017</div></div>
+        </div>
+        
+        <div id="author" class="clearfix" style="margin-bottom:5%;">
+            <div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/user.svg" /></div>
+            <div class="d-inline"><div>Jean Michel VICTOR</div><div class="text-primary">jean-michel.victor@insa-lyon.fr</div></div>
+        </div>
+        
+        <div id="details" style="margin-bottom:5%;">
+            <u>Niveau</u> : Débutant<br/>
+            <u>Notes</u> :
+                16 <img style="height:1em;" src="images/like.svg"/>
+                4 <img style="height:1em;" src="images/dislike.svg"/>
+        </div style="margin-bottom:2%;">
+        
+        <div id="description" style="margin-bottom:5%;">
+        <u>Description</u> : Une fiche qui résume les propriétés mathématiques des matrices.
+        </div>
+        
+        <div id="tags" style="margin-bottom:5%;">
+            <u>Tags</u> :</br>
+            <span class="text-primary font-italic">#determinant #trace #produit_matriciel</span>
+        </div>
+        
+        <div id="comments">
+            <div style="margin-bottom:2%;"><strong>Commentaires</strong></div>
+            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
+                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Cette fiche m'a bien aidé à mon dernier DS, merci Victor :)</div>
+                <div class="clearfix" style="font-size:60%;">
+                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
+                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
+                        <div class="d-inline">Théo Labarbe</div>
+                    </div>
+                    <div  class="d-inline float-right clearfix" style="width:22%;">
+                        123 <img style="height:1em;" src="images/like.svg"/>
+                        014 <img style="height:1em;" src="images/dislike.svg"/>
+                    </div>        
+                </div>
+            </div>
+            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
+                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Erreur de frappe à la page 2, ligne 12.</div>
+                <div style="font-size:60%;">
+                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
+                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
+                        <div class="d-inline">Julie Meunier</div>
+                    </div>
+                    <div  class="d-inline float-right" style="width:22%;">
+                        101 <img style="height:1em;" src="images/like.svg"/>
+                        186 <img style="height:1em;" src="images/dislike.svg"/>
+                    </div>        
+                </div>
+            </div>
+            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
+                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Ceci est un commentaire !</div>
+                <div style="font-size:60%;">
+                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
+                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
+                        <div class="d-inline">Chris Jean</div>
+                    </div>
+                    <div class="d-inline float-right" style="width:22%;">
+                        012 <img style="height:1em;" src="images/like.svg"/>
+                        604 <img style="height:1em;" src="images/dislike.svg"/>
+                    </div>
+                </div>
+            </div>
 
-		<div id="author" class="clearfix" style="margin-bottom:5%;">
-			<div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/user.svg" /></div>
-			<div class="d-inline"><div>Jean Michel VICTOR</div><div class="text-primary">jean-michel.victor@insa-lyon.fr</div></div>
-		</div>
-
-		<div id="details" style="margin-bottom:5%;">
-			<u>Niveau</u>: débutant<br/>
-			<u>Notes</u>: 27 <img style="width:5%;" src="images/like.svg"/>
-						   4 <img style="width:5%;" src="images/dislike.svg"/>
-		</div style="margin-bottom:2%;">
-
-		<div id="description" style="margin-bottom:5%;">
-		<u>Description</u>: Une fiche qui résume les propriétés mathématiques des matrices.
-		</div>
-
-		<div id="tags" style="margin-bottom:5%;">
-		Tags:</br>
-		<span class="text-primary font-italic">#determinant #trace #produit_matriciel</span>
-		</div>
-
-		<div id="comments">
-			<div style="margin-bottom:2%;"><strong>Commentaires</strong></div>
-			<div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
-				<div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Cette fiche m'a bien aidé à mon dernier DS, merci Victor :)</div>
-				<div class="clearfix" style="font-size:60%;">
-					<div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-						<div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-						<div class="d-inline">Théo Labarbe</div>
-					</div>
-					<div  class="d-inline float-right clearfix" style="width:22%;">
-						123 <img style="width:15%;" src="images/like.svg"/>
-						014 <img style="width:15%;" src="images/dislike.svg"/>
-					</div>		
-				</div>
-			</div>
-			<div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
-				<div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Erreur de frappe à la page 2, ligne 12.</div>
-				<div style="font-size:60%;">
-					<div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-						<div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-						<div class="d-inline">Julie Meunier</div>
-					</div>
-					<div  class="d-inline float-right" style="width:22%;">
-						101 <img style="width:15%;" src="images/like.svg"/>
-						186 <img style="width:15%;" src="images/dislike.svg"/>
-					</div>		
-				</div>
-			</div>
-			<div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%;">
-				<div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Ceci est un commentaire !</div>
-				<div style="font-size:60%;">
-					<div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-						<div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-						<div class="d-inline">Chris Jean</div>
-					</div>
-					<div  class="d-inline float-right" style="width:22%;">
-						012 <img style="width:15%;" src="images/like.svg"/>
-						604 <img style="width:15%;" src="images/dislike.svg"/>
-					</div>		
-				</div>
-			</div>
-
-		</div>
+        </div>
         <script type="text/javascript">
             var resname = getUrlParameter("resname") || "Document";
             document.getElementById("resname").innerText = resname;

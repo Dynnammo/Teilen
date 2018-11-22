@@ -27,6 +27,13 @@
     border-style: none;
 }
 
+#path span:last-child {
+    display: inline-block;
+}
+#path span:last-child::after {
+    content: "";
+}
+
         </style>
     </head>
     <body>
@@ -43,10 +50,8 @@
                         <span><a href="nav_all.html">INSA</a></span>
                         <span id="path_dept"><a>3IF</a></span>
                         <span id="path_subject"><a>C++</a></span>
+                        <span id="resname">Matrices</span>
                     </div>
-                </div>
-                <div id="nav_form" class="centeredrow">
-                    <h2 id="resname">Matrices</h2>
                 </div>
             </div>
             
@@ -56,9 +61,9 @@
             <div id="bottom-bar">
                 <table style="width:100%;" >
                     <tr>
-                        <td class="text-center" style="width:33%;"><img id="like-img"    src="images/like.svg"    style="width:30%; max-width:50px; cursor:pointer;" onclick="onLikeClick(this)"/></td>
-                        <td class="text-left"   style="width:33%;"><img id="dislike-img" src="images/dislike.svg" style="width:30%; max-width:50px; cursor:pointer;" onclick="onDislikeClick(this)"/></td>
-                        <td class="text-right"  style="width:34%;"><img id="comment-img" src="images/chat.svg"    style="width:30%; max-width:50px; cursor:pointer;" onclick="onCommentClick()"/></td>
+                        <td class="text-center" style="width:33%;"><img id="like-img" src="images/like.svg" style="width:30%; max-width:50px; cursor:pointer;" onclick="onLikeClick(this)"/></td>
+                        <td class="text-left" style="width:33%;"><img id="dislike-img" src="images/dislike.svg" style="width:30%; max-width:50px; cursor:pointer;" onclick="onDislikeClick(this)"/></td>
+                        <td class="text-right" style="width:34%;"><img id="comment-img" src="images/chat.svg" style="width:30%; max-width:50px; cursor:pointer;" onclick="onCommentClick()"/></td>
                     </tr>
                     <tr><td colspan="3">Commentaire :</td></tr>
                     <tr>
@@ -104,11 +109,11 @@
                     $("#bottom-tap").on("click", toggler);
                     toggler();
                 });
+                
             }
             
-            if (window.init)
-                ready(init);
-
+            if (window.init) ready(init);
+            
             function onLikeClick(elem){
                 var equivElemId = "#" + (new String( $(elem).attr("id") ) ).replace("like", "dislike");
                 src = $(elem).attr('src');
@@ -119,7 +124,6 @@
                     $(elem).attr("src", "images/like.svg");                    
                 }
             }
-
             function onDislikeClick(elem){
                 var equivElemId = "#" + (new String( $(elem).attr("id") ) ).replace("dislike", "like");
                 src = $(elem).attr('src');
@@ -130,13 +134,10 @@
                     $(elem).attr("src", "images/dislike.svg");
                 }
             }
-
             function onCommentClick(elem){
                 if( $("#comment").val() != "")
                     $("#comment").val("");
             }
-
-
         </script>
     </body>
 </html>

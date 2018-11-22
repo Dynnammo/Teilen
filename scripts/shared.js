@@ -25,21 +25,24 @@ function () {
         case "edit":
             message = "Les modifications apportées ont bien été enregistrées.";
         break;
+        case "forgot":
+            message = "Un lien de réinitialisation de mot de passe vous a été envoyé par email.";
+        break;
     }
     
     if (message.length > 0) // alert(message);
     {
         addStyle("https://jqueryui.com/resources/demos/style.css");
-        addStyle("https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
-        addScript("https://code.jquery.com/ui/1.12.1/jquery-ui.js");
+        addStyle("https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css");
+        addScript("https://code.jquery.com/ui/1.12.1/jquery-ui.min.js");
         setTimeout(function() {
             var dialog = document.createElement("div");
             dialog.id = "dialog";
             dialog.title = "Information";
             dialog.innerText = message;
-            document.body.appendChild(dialog);
+            document.body.children[0].appendChild(dialog);
             $("#dialog").dialog();
-        }, 500);
+        }, 750);
     }
 }
 );
