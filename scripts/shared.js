@@ -44,7 +44,23 @@ function () {
             dialog.title = "Information";
             dialog.innerText = message;
             document.body.children[0].appendChild(dialog);
-            $("#dialog").dialog();
+            $("#dialog").dialog({
+                close: function( event, ui ) {
+                    $("#dialog").remove();
+                    window.location = window.location.href.replace("&msg=", "&old=");
+                },
+                buttons: [
+                    {
+                        text: "OK",
+                        click: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+            $(".ui-dialog button").each( function() {
+                $(this)[0].style = "border-color: gray !important;";
+            });
         }, 750);
     }
 }
