@@ -20,10 +20,10 @@ function () {
     var message = "";
     switch (msg) {
         case "new":
-            message = "Vous allez recevoir un email avec un lien pour confirmer la création de votre compte.";
+            message = "Vous allez recevoir un email pour l'activation de votre compte.";
         break;
         case "edit":
-            message = "Les modifications apportées ont été enregistrées !";
+            message = "Les modifications apportées ont bien été enregistrées.";
         break;
     }
     

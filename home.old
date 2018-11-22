@@ -40,17 +40,22 @@ button {
     height: 100%;
 }
 
-#area_top div {
+#area_top span:first-child {
+    /* flex-grow: 0; */
+}
+#area_top span {
+    flex-grow: 1;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#area_top div {
-    width: 50%;
+#area_top img {
+    max-width: 100%;
     max-height: 100%;
 }
-#area_top img {
-    max-width: 50%;
+#area_top a {
+    width: 100%;
     max-height: 100%;
 }
 
@@ -59,8 +64,9 @@ button {
     <body>
         <div id="page" class="centeredcol">
             <div id="area_top" class="area centeredrow">
-                <div><h2>Thomas MEUNIER</h2></div>
-                <div><div style="display:block; width:100%;"><a href="account.html?mode=edit"><img src="images/params.svg"/></a><a href="index.html"><img src="images/cancel.svg"/></a></div></div>
+                <span>Thomas MEUNIER</span>
+                <span><a href="account.html?mode=edit"><img src="images/params.svg"/></a></span>
+                <span><a href="index.html"><img src="images/cancel.svg"/></a></span>
             </div>
             
             <div class="area"><p>Accèder aux ressources :</p></div>
@@ -71,7 +77,7 @@ button {
                         <td><a href="my_uploads.html"><button class="btn btn-primary">Uploads</button></a></td>
                         <td><a href="my_favorites.html"><button class="btn btn-primary">Favoris</button></a></td>
                         -->
-                        <td><a href="nav_all.html?filter=upl"><button class="btn btn-primary">Uploads</button></a></td>
+                        <td><a href="nav_all.html?filter=upload"><button class="btn btn-primary">Uploads</button></a></td>
                         <td><a href="nav_all.html?filter=fav"><button class="btn btn-primary">Favoris</button></a></td>
                     </tr>
                     <tr>
