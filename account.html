@@ -59,16 +59,18 @@
 
       </div>
 
-      <br/><br/>
-
-       <div class="text-center">
-            <a id="mode_link" href="index.html"><button id="mode_ok" class="btn btn-primary" onClick="index.html" type="button">Inscription</button></a>
-       </div>
-    
+        <br/><br/>
+        
+        <div class="text-center">
+            <a id="mode_back" href="index.html"><button class="btn btn-primary" type="button">Annuler</button></a>
+            <a id="mode_link" href="index.html?msg=new"><button id="mode_ok" class="btn btn-primary" type="button">S'inscire</button></a>
+        </div>
+        
         <script type="text/javascript">
             function init() {
                 if (getUrlParameter("mode") == "edit") {
-                    document.getElementById("mode_link").href = "home.html";
+                    document.getElementById("mode_back").href = "home.html";
+                    document.getElementById("mode_link").href = "home.html?msg=edit";
                     document.getElementById("mode_title").innerText = "Mon compte";
                     document.getElementById("mode_ok").innerText = "Confirmer";
                     document.getElementById("nom").value = "MEUNIER";
@@ -82,5 +84,5 @@
             }
             ready(init);
         </script>
-  </body>
+    </body>
 </html>
