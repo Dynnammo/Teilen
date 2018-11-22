@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Inscription</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="scripts/shared.js"></script>
@@ -23,33 +23,39 @@
                 <td><input class="form-control" type="text" id="prenom" name="prenom" placeholder="Prénom" ></td>
             </tr>
             <tr>
-                <td><label for="email INSA">E-Mail INSA </label></td>
-                <td><input class="form-control" type="email" id="e-mail INSA" name="e-mail INSA" placeholder="E-Mail INSA" ></td>
+                <td><label for="e-mail INSA">E-Mail INSA </label></td>
+                <td><input class="form-control" type="email" id="e-mail INSA" name="e-mail INSA" placeholder="E-Mail INSA" value="@insa-lyon.fr"></td>
             </tr>
             <tr>
                 <td><label for="mot de passe">Mot de passe </label></td>
                 <td><input class="form-control" type="password" id="mot de passe" name="mot de passe" placeholder="Mot de passe" ></td>
             </tr>
             <tr >
-                <td >
-            </tr>
-
-        </table>
+                <td>
+                  <label for="moodN">Année</label>
+                </td>
+                <td>
 
         <div class="text-right">
-        <select id="mood">
+        <select id="moodN">
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
-        <select id="mood">
+        <select id="moodDPT">
+          <option>PC</option>
           <option>IF</option><option>GM</option><option>GCU</option>
           <option>TC</option><option>BS</option><option>GEN</option>
           <option>GE</option><option>GI</option><option>SGM</option>
         </select>
         </div>
+
+                </td>
+            </tr>
+
+        </table>
 
       </div>
 
@@ -70,6 +76,8 @@
                     document.getElementById("e-mail INSA").value = "thomas.meunier@insa-lyon.fr";
                     document.getElementById("e-mail INSA").readOnly = true;
                     document.getElementById("mot de passe").value = "thomasmeunier";
+                    document.getElementById("moodN").value = "3";
+                    document.getElementById("moodDPT").value = "IF";
                 }
             }
             ready(init);

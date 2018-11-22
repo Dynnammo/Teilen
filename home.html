@@ -3,6 +3,7 @@
     <head>
         <title>Teilen</title>
         <meta charset="UTF-8"/>
+        <script src="scripts/shared.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/shared.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_nav.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_files.css"/>
@@ -69,8 +70,12 @@ button {
             <div id="area_fill" class="area">
                 <table>
                     <tr>
+                        <!--
                         <td><a href="my_uploads.html"><button class="btn btn-primary">Uploads</button></a></td>
                         <td><a href="my_favorites.html"><button class="btn btn-primary">Favoris</button></a></td>
+                        -->
+                        <td><a href="nav_all.html?filter=upload"><button class="btn btn-primary">Uploads</button></a></td>
+                        <td><a href="nav_all.html?filter=fav"><button class="btn btn-primary">Favoris</button></a></td>
                     </tr>
                     <tr>
                         <td><a href="nav_all.html"><button class="btn btn-primary">Tout</button></a></td>

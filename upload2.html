@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>IHM</title>
+        <title>Teilen</title>
         <meta charset="UTF-8"/>
+        <script src="scripts/shared.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/shared.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script
               src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -50,17 +52,16 @@
         <script type="application/javascript">
             $('#tags').on('change', function() {
                 var tags = $(this).val();
-                var result = "";
-                var elems = tags.split(" ");
-                elems.forEach( function(elem){
-                    if(elem[0]!="#")
-                        result = result + "#" + elem + " ";
-                    else
-                        result = result + elem + " ";
-                });
-                $(this).val(result);
+                var elems = tags.replace(/\s/g, " ").split(" ");
+                var result = elems.map(
+                    function(value) {
+                        value = value.replace(/#/g, "");
+                        if (value.length == 0) return value;
+                        return "#" + value;
+                    }
+                );
+                $(this).val(result.join(" ").replace(/\ {2,}/g, " "));
             });
         </script>
-    
     </body>
 </html>

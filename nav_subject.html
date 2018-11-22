@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>IHM</title>
+        <title>Teilen</title>
         <meta charset="UTF-8"/>
+        <script src="scripts/shared.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/shared.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_nav.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_files.css"/>
@@ -17,11 +18,11 @@
             
             <div id="area_nav" class="area centeredcol">
                 <div id="nav_path">
-                    <button>&lt;</button>
+                    <a><button>&lt;</button></a>
                     <div id="path">
-                        <span>INSA</span>
-                        <span>3IF</span>
-                        <span>C++</span>
+                        <span><a href="nav_all.html">INSA</a></span>
+                        <span id="path_dept"><a>3IF</a></span>
+                        <span id="path_subject"><a href="#">C++</a></span>
                     </div>
                 </div>
                 <div id="nav_form" class="centeredrow">
@@ -50,6 +51,20 @@
             </div>
         </div>
         <script type="text/javascript">
+            var dept = getUrlParameter("dept") || "3IF";
+            var subject = getUrlParameter("subject") || "CMSI";
+            document.getElementById("path_subject").children[0].innerText = subject;
+            document.getElementById("path_dept").children[0].innerText = dept;
+            document.getElementById("path_dept").children[0].href = "nav_dept.html?dept=" + dept;
+            document.getElementById("nav_path").children[0].href = "nav_dept.html?dept=" + dept;
+            
+            function init() {
+                $("div.folder").each( function() {
+                    var item = $(this)[0];
+                    var resname = item.children[0].innerText;
+                    item.onclick = function() {window.location = "ressource_viewer.html?dept=" + dept + "&subject=" + encodeURIComponent(subject)};
+                });
+            }
             if (window.init) ready(init);
         </script>
     </body>
