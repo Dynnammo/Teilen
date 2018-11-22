@@ -65,6 +65,7 @@
             </div>
         </div>
         <script type="text/javascript">
+            var filter = getUrlParameter("filter");
             var dept = getUrlParameter("dept") || "3IF";
             document.getElementById("path_dept").children[0].innerText = dept;
             
@@ -74,6 +75,34 @@
                     var subject = item.children[0].innerText;
                     item.onclick = function() {window.location = "nav_subject.html?dept=" + dept + "&subject=" + encodeURIComponent(subject)};
                 });
+                
+                $(".folder").each( function() {
+                    var item = $(this)[0];
+                    if ((item.innerText+"+")[1] == "+") {
+                       item.className += " fav";
+                       item.innerHTML += "<div class=\"fav\">❤</div>";
+                    }
+                });
+                
+                if (filter.length > 0) {
+                    if (filter == "fav") {
+                        $(".folder").each( function() {
+                            var item = $(this)[0];
+                            if (!(item.innerText[0] == "C")) item.style = "display: none;";
+                        });
+                        document.getElementById("area_folders").children[0].style = "display:none;";
+                    }
+                    if (filter == "upl") {
+                        $(".group .folder").each( function() {
+                            var item = $(this)[0];
+                            if ((!item.innerText.includes("C")) || (item.innerText.length<4)) item.style = "display: none;";
+                        });
+                    }
+                    $("a").each( function() {
+                        var item = $(this)[0];
+                        item.href += (item.href.includes("?") ? "&" : "?") + "filter=" + filter;
+                    });
+                }
             }
             if (window.init) ready(init);
         </script>

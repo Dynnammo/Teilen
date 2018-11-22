@@ -29,3 +29,16 @@
 .folder > span {
     text-align: center;
 }
+
+.folder {
+    background-color: rgba(0, 123, 255, 0.33);
+    cursor: pointer;
+}
+.folder.fav {
+    position: relative;
+}
+.folder .fav {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+}

@@ -22,10 +22,6 @@
     max-height: 100%;
 }
 
-.folder.fav span::after {
-    content: " ❤";
-}
-
         </style>
     </head>
     <body>
@@ -107,7 +103,10 @@
                 
                 $(".folder").each( function() {
                     var item = $(this)[0];
-                    if (item.innerText.includes("IF")) item.className += " fav";
+                    if (item.innerText.includes("IF")) {
+                       item.className += " fav";
+                       item.innerHTML += "<div class=\"fav\">❤</div>";
+                    }
                 });
                 
                 if (filter.length > 0) {
@@ -127,7 +126,8 @@
                         document.getElementById("area_folders").children[3].style = "display:none;";
                     }
                     $("a").each( function() {
-                        a.href += "&filter=" + filter;
+                        var item = $(this)[0];
+                        item.href += (item.href.includes("?") ? "&" : "?") + "filter=" + filter;
                     });
                 }
             }
