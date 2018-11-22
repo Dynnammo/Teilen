@@ -52,15 +52,15 @@
             </div>
             
             <div id="area_files" class="area">
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
-                <div class="file"><div class="icon"></div><div class="infos"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
+                <div class="file"><div class="icon"></div><div class="infos"></div><div class="details"></div></div>
             </div>
             
             <div id="area_bottom" class="area centeredrow">
@@ -90,12 +90,17 @@
             });
             }
             
+            var detidx = 0;
+            var liked = $(".file .details").each( function() {
+                $(this)[0].innerHTML = "<span style=\"font-size:larger;\">🛈</span><br/>16🖒 4🖓";
+            });
+            
             function gen(cat,hs,n) {
                 var genidx = 0;
                 $(".file .infos").each( function() {
                     var len = cat.length-2;
                     var nom = cat[genidx > len ? len+1 : genidx] + (genidx > len ? genidx - len : "");
-                    var diff = ["Facile", "Moyen", "Difficile"][genidx % 3];
+                    var diff = ["Débutant", "Moyen", "Avancé"][genidx % 3];
                     
                     genidx++;
                     var hash = "";
@@ -130,13 +135,18 @@
             }
             
             function init() {
-                $("div.file").each( function() {
+                function linker(linkto) {
+                return function() {
                     var item = $(this)[0];
                     item.onclick = function() {
-                        var resname = item.children[1].innerText.split("\n")[0];
-                        window.location = "ressource_viewer.html?dept=" + dept + "&subject=" + encodeURIComponent(subject) + "&filter=" + filter + "&resname=" + encodeURIComponent(resname);
+                        var resname = item.parentElement.children[1].innerText.split("\n")[0];
+                        window.location = linkto + "?dept=" + dept + "&subject=" + encodeURIComponent(subject) + "&filter=" + filter + "&resname=" + encodeURIComponent(resname);
                     };
-                });
+                }
+                }
+                $("div.file .icon").each(linker("ressource_viewer.html"));
+                $("div.file .infos").each(linker("ressource_viewer.html"));
+                $("div.file .details").each(linker("ressource_details.html"));
                 
                 tab(0);
                 
