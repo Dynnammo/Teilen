@@ -1,20 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Inscription</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <script src="scripts/shared.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/shared.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">    
-    
   </head>  
   <body style="background-color: #f6f6f6;">
       <div class="container">
-        <h1 class="text-center">
-          Formulaire d'inscription
-        </h1>
-<br/><br/>
+        <h1 id="mode_title" class="text-center">Inscription</h1>
+        <br/><br/>
         <table style="width:100%;">
             <tr>
                 <td><label for="nom">Nom </label></td>
@@ -58,8 +56,23 @@
       <br/><br/>
 
        <div class="text-center">
-            <a href="index.html"><button class="btn btn-primary" onClick="index.html" type="button">Inscription</button></a>
+            <a id="mode_link" href="index.html"><button id="mode_ok" class="btn btn-primary" onClick="index.html" type="button">Inscription</button></a>
        </div>
     
+        <script type="text/javascript">
+            function init() {
+                if (getUrlParameter("mode") == "edit") {
+                    document.getElementById("mode_link").href = "home.html";
+                    document.getElementById("mode_title").innerText = "Mon compte";
+                    document.getElementById("mode_ok").innerText = "Confirmer";
+                    document.getElementById("nom").value = "MEUNIER";
+                    document.getElementById("prenom").value = "Thomas";
+                    document.getElementById("e-mail INSA").value = "thomas.meunier@insa-lyon.fr";
+                    document.getElementById("e-mail INSA").readOnly = true;
+                    document.getElementById("mot de passe").value = "thomasmeunier";
+                }
+            }
+            ready(init);
+        </script>
   </body>
 </html>
