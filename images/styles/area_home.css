@@ -1,0 +1,20 @@
+
+#area_top > div {
+    max-height: 100%;
+}
+#area_top > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+}
+#area_top > div + div {
+    text-align: right;
+    width: 25%;
+}
+
+#area_nav button {
+    border-style: none;
+    background-color: inherit;
+    padding: 0.2em;
+}

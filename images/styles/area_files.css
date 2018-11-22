@@ -1,0 +1,72 @@
+
+#area_files #upload {
+    position: fixed;
+    bottom: calc(10px + 10%);
+    right: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    background-color: rgba(173, 216, 230, 0.5);
+    border: 2px rgb(173, 216, 230) /*lightblue*/;
+    border-style: solid;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+}
+#upload a {
+    font-size: 30pt;
+    text-decoration: none;
+    color: blue;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file {
+    margin: 10px;
+    
+    display: flex;
+    flex-direction: row;
+}
+.file .icon {
+    flex-grow: 0;
+    height: 60px;
+    width: 60px;
+    border: 1px black;
+    border-style: solid;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.file .infos {
+    flex-grow: 1;
+    line-height: 1.2;
+}
+.file .details {
+    text-align: center;
+    flex-grow: 0;
+    width: 60px;
+}
+
+.file {
+    cursor: pointer;
+}
+.icon.fav {
+    position: relative;
+}
+.icon .fav {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+}
+
+.file .icon {
+    background-image: url("../images/pdf.svg");
+    background-repeat: no-repeat;
+    border-style: none;
+}
