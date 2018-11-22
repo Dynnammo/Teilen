@@ -73,7 +73,7 @@
                 $("div.folder").each( function() {
                     var item = $(this)[0];
                     var subject = item.children[0].innerText;
-                    item.onclick = function() {window.location = "nav_subject.html?dept=" + dept + "&subject=" + encodeURIComponent(subject)};
+                    item.onclick = function() {window.location = "nav_subject.html?dept=" + dept + "&subject=" + encodeURIComponent(subject) + "&filter=" + filter};
                 });
                 
                 $(".folder").each( function() {

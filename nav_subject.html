@@ -79,6 +79,17 @@
             document.getElementById("path_dept").children[0].href = "nav_dept.html?dept=" + dept;
             document.getElementById("nav_path").children[0].href = "nav_dept.html?dept=" + dept;
             
+            if (dept.includes("IF") && subject.replace(/\+/g,"")=="C") {
+            var favidx = 0;
+            var liked = $(".file .icon").each( function() {
+                if (favidx++ == 2) {
+                    var item = $(this)[0];
+                    item.className += " fav";
+                    item.innerHTML += "<div class=\"fav\">❤</div>";
+                }
+            });
+            }
+            
             function gen(cat,hs,n) {
                 var genidx = 0;
                 $(".file .infos").each( function() {
@@ -95,7 +106,9 @@
                     var item = $(this)[0];
                     item.innerHTML = nom + "<br/><span style=\"font-size:smaller;\">" + diff + "<br/>" + hash + "</span>";
                     
-                    item.parentElement.style = (genidx > n ? "display:none;" : "display:flex;");
+                    var shown = (genidx <= n);
+                    if (filter == "fav") shown = shown && (genidx == 3);
+                    item.parentElement.style = (shown ? "display:flex;" : "display:none;");
                 });
             }
             
@@ -109,11 +122,11 @@
                 switch (i) {
                     case 0: cat = ["Les Matrices", "Le Calcul", "L'Algèbre", "Cours p."]; break;
                     case 1: cat = ["Résumé de cours", "Formulaire", "Fiche n°"]; break;
-                    case 2: cat = ["Exerice n°"]; break;
+                    case 2: cat = ["Exercice n°"]; break;
                     case 3: cat = ["Sujet de 201"]; break;
                 }
                 
-                return gen(cat, hs, [10,2,4,6][i]);
+                return gen(cat, hs, (filter == "upl" ? 1 : [10,2,4,6][i]));
             }
             
             function init() {
@@ -126,6 +139,11 @@
                 });
                 
                 tab(0);
+                
+                $("a").each( function() {
+                    var item = $(this)[0];
+                    item.href += (item.href.includes("?") ? "&" : "?") + "filter=" + filter;
+                });
             }
             if (window.init) ready(init);
         </script>

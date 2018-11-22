@@ -16,3 +16,15 @@
 .file .infos {
     line-height: 1.2;
 }
+
+.file {
+    cursor: pointer;
+}
+.icon.fav {
+    position: relative;
+}
+.icon .fav {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+}

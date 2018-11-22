@@ -50,10 +50,10 @@
                 </div>
             </div>
             
-
             <iframe id="pdf-reader" name="PDFReader" src="others/teilen.pdf" style="height:100%; width:100%;"></iframe>
             
-            <div id="bottom-bar" >
+            <div id="bottom-tap" style="text-align:center; width:100%; height:2em;"></div>
+            <div id="bottom-bar">
                 <table style="width:100%;" >
                     <tr>
                         <td class="text-center" style="width:33%;"><img src="images/like.svg" style="width:30%;"/></td>
@@ -66,12 +66,10 @@
                     </tr>
                 </table>
             </div>
-
         </div>
         <script type="text/javascript">
             var dept = getUrlParameter("dept") || "3IF";
             var subject = getUrlParameter("subject") || "CMSI";
-            var filter = getUrlParameter("filter");
             
             document.getElementById("path_subject").children[0].innerText = subject;
             document.getElementById("path_subject").children[0].href = "nav_subject.html?dept=" + dept + "&subject=" + encodeURIComponent(subject);
@@ -91,18 +89,20 @@
                     };
                 });
                 
-$( document ).ready(function() {
-    $("#pdf-reader").load(function(){
+$(document).ready(function() {
+    /* $("#pdf-reader").load(function(){
         $(this).contents().on("mousedown, mouseup, click", function(){
             console.log("Click detected inside iframe.");
         });
-    });
-    $("#bottom-bar").on("click", function(event){
-        if( $("#bottom-bar").is(":visible") )
-            $("#bottom-bar").hide();
-        else
-            $("#bottom-bar").show();
-    });
+    }); */
+    function toggler(event){
+        var bar = $("#bottom-bar");
+        var shown = bar.is(":visible");
+        if (shown) bar.hide(); else bar.show();
+        document.getElementById("bottom-tap").innerText = (shown ? "^^^ Laisser un avis ^^^" : "vvv Laisser un avis vvv");
+    }
+    $("#bottom-tap").on("click", toggler);
+    toggler();
 });
                 
             }
