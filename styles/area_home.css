@@ -12,3 +12,9 @@
     text-align: right;
     width: 25%;
 }
+
+#area_nav button {
+    border-style: none;
+    background-color: inherit;
+    padding: 0.2em;
+}
