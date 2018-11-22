@@ -35,3 +35,8 @@
     left: 35px;
     top: 35px;
 }
+
+.file .icon {
+    background-image: url("images/pdf.svg");
+    border-style: none;
+}

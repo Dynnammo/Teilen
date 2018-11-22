@@ -4,6 +4,7 @@
         <title>Teilen</title>
         <meta charset="UTF-8"/>
         <script src="scripts/shared.js"></script>
+        <script src="scripts/interact.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/shared.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_nav.css"/>
         <link rel="stylesheet" type="text/css" href="styles/area_files.css"/>
@@ -11,20 +12,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <style>
 
-#area_top > div:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#nav_path {
+    position: relative;
 }
-#area_top > div {
-    text-align: right;
-    max-width: 50%;
-    max-height: 100%;
+#nav_path > span:first-child {
+    position: absolute;
+    right: 2px;
 }
-
-.file .icon {
-    background-image: url("images/pdf.svg");
-    border-style: none;
+#details {
+    text-decoration: none;
 }
 
 #path span:last-child {
@@ -45,6 +41,7 @@
             
             <div id="area_nav" class="area centeredcol">
                 <div id="nav_path">
+                    <span><a id="details">🛈</a></span>
                     <a><button id="test">&lt;</button></a>
                     <div id="path">
                         <span><a href="nav_all.html">INSA</a></span>
@@ -73,6 +70,7 @@
             </div>
         </div>
         <script type="text/javascript">
+            var filter = getUrlParameter("filter");
             var dept = getUrlParameter("dept") || "3IF";
             var subject = getUrlParameter("subject") || "CMSI";
             
@@ -110,33 +108,20 @@
                     toggler();
                 });
                 
+                function linker(linkto) {
+                return function() {
+                    var item = $(this)[0];
+                    item.href = linkto + "?dept=" + dept + "&subject=" + encodeURIComponent(subject) + "&filter=" + filter + "&resname=" + encodeURIComponent(resname);
+                }
+                }
+                $("#details").each(linker("ressource_details.html"));
             }
             
             if (window.init) ready(init);
             
-            function onLikeClick(elem){
-                var equivElemId = "#" + (new String( $(elem).attr("id") ) ).replace("like", "dislike");
-                src = $(elem).attr('src');
-                if( src == "images/like.svg"){
-                    $(elem).attr("src", "images/thumb-up.png");
-                    $(equivElemId).attr("src", "images/dislike.svg");
-                } else {
-                    $(elem).attr("src", "images/like.svg");                    
-                }
-            }
-            function onDislikeClick(elem){
-                var equivElemId = "#" + (new String( $(elem).attr("id") ) ).replace("dislike", "like");
-                src = $(elem).attr('src');
-                if( src == "images/dislike.svg"){
-                    $(elem).attr("src", "images/thumb-down.png");
-                    $(equivElemId).attr("src", "images/like.svg");
-                } else {
-                    $(elem).attr("src", "images/dislike.svg");
-                }
-            }
             function onCommentClick(elem){
-                if( $("#comment").val() != "")
-                    $("#comment").val("");
+                if ($("#comment").val() != "")
+                    $("#comment").val(     "");
             }
         </script>
     </body>
