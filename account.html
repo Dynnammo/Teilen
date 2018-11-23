@@ -56,6 +56,10 @@ input {
                     <td><input class="form-control" type="password" id="mot de passe" name="mot de passe" placeholder="Mot de passe" ></td>
                 </tr>
                 <tr>
+                    <td><label for="confirmation">Confirmation </label></td>
+                    <td><input class="form-control" type="password" id="confirmation" name="confirmation" placeholder="Confirmation du mot de passe" ></td>
+                </tr>
+                <tr>
                     <td><label for="moodN">Année</label></td>
                     <td>
                         <div class="text-right">
@@ -117,6 +121,7 @@ input {
                     document.getElementById("e-mail INSA").value = "thomas.meunier@insa-lyon.fr";
                     document.getElementById("e-mail INSA").readOnly = true;
                     document.getElementById("mot de passe").value = "thomasmeunier";
+                    document.getElementById("confirmation").value = "thomasmeunier";
                     document.getElementById("moodN").value = "3";
                     document.getElementById("moodDPT").value = "IF";
                 }
