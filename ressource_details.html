@@ -31,11 +31,16 @@ body {
     height: 8vw;
 }
 
+img {
+    max-width: 50px;
+}
+
         </style>
     </head>
     <body>
-        <div id="close_div" style="cursor:pointer;" onclick="window.history.back();" >
-            <img src="images/cancel.svg" alt="X"/>
+        <div id="close_div" style="cursor:pointer;"  > <!--onclick="window.history.back();"-->
+            <div onclick="window.history.back();"><img src="images/cancel.svg" alt="X" /></a></div>
+            <div ><img onclick="onHeartClick(this)" src="images/empty-heart.svg" /></a></div>
         </div>
         <div id="header" class="text-primary text-left clearfix" style="margin-bottom:5%;">
             <div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/pdf.svg" /></div>
@@ -60,49 +65,67 @@ body {
         </div>
         <div id="comments">
             <div style="margin-bottom:2%;"><strong>Commentaires</strong></div>
-            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%; background-color: white;">
-                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Cette fiche m'a bien aidé à mon dernier DS, merci Victor :)</div>
-                <div class="clearfix" style="font-size:60%;">
-                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-                        <div class="d-inline">Théo Labarbe</div>
-                    </div>
-                    <div  class="d-inline float-right clearfix" style="width:22%;">
-                        123 <img id="comment-1-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
-                        014 <img id="comment-1-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
-                    </div>
-                </div>
-            </div>
-            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%; background-color: white;">
-                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Erreur de frappe à la page 2, ligne 12.</div>
-                <div style="font-size:60%;">
-                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-                        <div class="d-inline">Julie Meunier</div>
-                    </div>
-                    <div  class="d-inline float-right" style="width:22%;">
-                        101 <img id="comment-2-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
-                        186 <img id="comment-2-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
-                    </div>
-                </div>
-            </div>
-            <div id="comment_box_1" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%; background-color: white;">
-                <div id="comment_1" style="font-size: 80% ;padding:0% 2% 0% 2%;">Ceci est un commentaire !</div>
-                <div style="font-size:60%;">
-                    <div id="comment_author_1" class="d-inline" style="margin-bottom:1%;">
-                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
-                        <div class="d-inline">Chris Jean</div>
-                    </div>
-                    <div  class="d-inline float-right" style="width:22%;">
-                        012 <img id="comment-3-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
-                        604 <img id="comment-3-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
-                    </div>
-                </div>
+        </div>
+        <div>
+            <div id="new-comment" class="text-center">
+                <img src="images/chat.svg" style="width: 20%; cursor:pointer;" onclick="writeComment()"/>
             </div>
         </div>
         <script type="text/javascript">
+            var nbComments = 0;
+
             var resname = getUrlParameter("resname") || "Document";
             document.getElementById("resname").innerText = resname;
+
+            function getCommentCode(message, likes, dislikes, authorName){
+                var commentNum = nbComments + 1;
+                var code = `<div id="comment-box-` + commentNum + `" class="border border-primary rounded clearfix" style="margin-bottom:2%; padding-bottom: 0.5%; background-color: white;">
+                                <div id="comment-` + commentNum + `" style="font-size: 80% ;padding:0% 2% 0% 2%;">` + message + `</div>
+                                <div style="font-size:60%;">
+                                    <div id="comment-author-` + commentNum + `" class="d-inline" style="margin-bottom:1%;">
+                                        <div id="header_img" class="d-inline float-left" style="width:5%; margin-right:1%;"><img src="images/user.svg" /></div>
+                                        <div class="d-inline">` + authorName + `</div>
+                                    </div>
+                                    <div  class="d-inline float-right" style="width:22%;">
+                                        ` + likes + ` <img id="comment-` + commentNum + `-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
+                                        ` + dislikes + ` <img id="comment-` + commentNum + `-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
+                                    </div>
+                                </div>
+                            </div>`;
+                nbComments += 1;
+                return code;
+            }
+
+            $("#comments").append( getCommentCode("Cette fiche m'a bien aidé à mon dernier DS, merci Victor :)", 123, 014, "Théo Labarbe") );
+            $("#comments").append( getCommentCode("Erreur de frappe à la page 2, ligne 12", 101, 186, "Julie Meunier") );
+            $("#comments").append( getCommentCode("Ceci est un commentaire !", 12, 604, "Chris Jean") );
+
+            function writeComment(){
+                var content =  `<img src="images/send.svg" style="width: 20%; cursor:pointer;" onclick="addNewComment()"/>
+                                <textarea id="comment" class="form-control" ></textarea>`;
+
+                $("#new-comment").html(content);
+                $("#new-comment").attr("class", "text-right");
+            }
+
+            function addNewComment(){
+                var commentText = $("#comment").val();
+                $("#comments").append( getCommentCode(commentText, 0, 0, "Thomas Meunier") );
+                
+                var content = `<img src="images/chat.svg" style="width: 20%; cursor:pointer;" onclick="writeComment()"/>`;
+                $("#new-comment").html(content);
+                $("#new-comment").attr("class", "text-center");
+            }
+
+            function onHeartClick(elem){
+                src = $(elem).attr('src');
+                if( src == "images/empty-heart.svg"){
+                    $(elem).attr("src", "images/heart.svg");
+                } else {
+                    $(elem).attr("src", "images/empty-heart.svg");                    
+                }
+            }
+
         </script>
     </body>
 </html>
