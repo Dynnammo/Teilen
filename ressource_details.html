@@ -40,11 +40,11 @@ img {
     <body>
         <div id="close_div" style="cursor:pointer;"  > <!--onclick="window.history.back();"-->
             <div onclick="window.history.back();"><img src="images/cancel.svg" alt="X" /></a></div>
-            <div ><img onclick="onHeartClick(this)" src="images/empty-heart.svg" /></a></div>
         </div>
         <div id="header" class="text-primary text-left clearfix" style="margin-bottom:5%;">
             <div id="header_img" class="d-inline float-left" style="width:15%; margin-right:5%;"><img src="images/pdf.svg" /></div>
             <div class="d-inline"><div id="resname">Matrices</div><div>15/03/2017</div></div>
+<img onclick="onHeartClick(this)" src="images/empty-heart.svg" style="max-width: 20px; cursor:pointer;"/>
         </div>
         
         <div id="author" class="clearfix" style="margin-bottom:5%;">
@@ -53,8 +53,8 @@ img {
         </div>
         <div id="details" style="margin-bottom:5%;">
             <u>Niveau</u>: débutant<br/>
-            <u>Notes</u>: 27 <img id="img-likes"    style="width:5%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)"/>
-                           4 <img id="img-dislikes" style="width:5%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)"/>
+            <u>Notes</u>: <span id="img-likes-nb">27</span> <img id="img-likes"    style="width:5%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)"/>
+                          <span id="img-dislikes-nb">4</span> <img id="img-dislikes" style="width:5%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)"/>
         </div style="margin-bottom:2%;">
         <div id="description" style="margin-bottom:5%;">
         <u>Description</u>: Une fiche qui résume les propriétés mathématiques des matrices.
@@ -87,8 +87,8 @@ img {
                                         <div class="d-inline">` + authorName + `</div>
                                     </div>
                                     <div  class="d-inline float-right text-right" style="width:22%; padding-right: 2px;">
-                                        ` + likes + ` <img id="comment-` + commentNum + `-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
-                                        ` + dislikes + ` <img id="comment-` + commentNum + `-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
+                                        <span id="comment-` + commentNum + `-likes-nb" >` + likes + `</span> <img id="comment-` + commentNum + `-likes" style="width:15%; cursor:pointer;" src="images/like.svg" onclick="onLikeClick(this)" />
+                                        <span id="comment-` + commentNum + `-dislikes-nb" >` + dislikes + `</span> <img id="comment-` + commentNum + `-dislikes" style="width:15%; cursor:pointer;" src="images/dislike.svg" onclick="onDislikeClick(this)" />
                                     </div>
                                 </div>
                             </div>`;
@@ -97,11 +97,11 @@ img {
             }
 
             $("#comments").append( getCommentCode("Cette fiche m'a bien aidé à mon dernier DS, merci Victor :)", 123, 014, "Théo Labarbe") );
-            $("#comments").append( getCommentCode("Erreur de frappe à la page 2, ligne 12", 101, 186, "Julie Meunier") );
+            $("#comments").append( getCommentCode("Erreur de frappe à la page 2, ligne 12", 101, 186, "Arnaud Syvestre") );
             $("#comments").append( getCommentCode("Ceci est un commentaire !", 12, 604, "Chris Jean") );
 
             function writeComment(){
-                var content =  `<img src="images/send.svg" style="width: 20%; cursor:pointer;" onclick="addNewComment()"/>
+                var content =  `<div style="margin: 5px;"><img src="images/send.svg" style="width: 20%; cursor:pointer;" onclick="addNewComment()"/></div>
                                 <textarea id="comment" class="form-control" ></textarea>`;
 
                 $("#new-comment").html(content);
@@ -110,9 +110,10 @@ img {
 
             function addNewComment(){
                 var commentText = $("#comment").val();
-                $("#comments").append( getCommentCode(commentText, 0, 0, "Thomas Meunier") );
+                if(commentText != "")
+                    $("#comments").append( getCommentCode(commentText, 0, 0, "Thomas Meunier") );
                 
-                var content = `<img src="images/chat.svg" style="width: 20%; cursor:pointer;" onclick="writeComment()"/>`;
+                var content = `<div style="margin: 5px;"><img src="images/chat.svg" style="width: 20%; cursor:pointer;" onclick="writeComment()"/></div>`;
                 $("#new-comment").html(content);
                 $("#new-comment").attr("class", "text-center");
             }

@@ -28,7 +28,7 @@
                 </div>
                 <div id="nav_form" class="centeredrow">
                     <input id="tags" type="tags" name="tags" placeholder="Tags">
-                    <button>❌</button>
+                    <img src="images/erase.svg" style="max-width:30px; width:15%; margin:3px; cursor:pointer;"/>
                 </div>
             </div>
             
@@ -67,7 +67,7 @@
                     var item = $(this)[0];
                     if ((item.innerText+"+")[1] == "+") {
                        item.className += " fav";
-                       item.innerHTML += "<div class=\"fav\">❤</div>";
+                       item.innerHTML += "<div class=\"fav\" style='color:red; font-size:20px;'>❤</div>";
                     }
                 });
                 

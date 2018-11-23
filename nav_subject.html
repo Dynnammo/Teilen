@@ -29,7 +29,7 @@
                 </div>
                 <div id="nav_form" class="centeredrow">
                     <input id="tags" type="tags" name="tags" placeholder="Tags">
-                    <button>❌</button>
+                    <img src="images/erase.svg" style="max-width:30px; width:15%; margin:3px; cursor:pointer;"/>
                 </div>
             </div>
             
@@ -68,14 +68,14 @@
                 if (favidx++ == 2) {
                     var item = $(this)[0];
                     item.className += " fav";
-                    item.innerHTML += "<div class=\"fav\">❤</div>";
+                    item.innerHTML += "<div class=\"fav\" style='color:red; font-size:20px;'>❤</div>";
                 }
             });
             }
             
             var detidx = 0;
             var liked = $(".file .details").each( function() {
-                $(this)[0].innerHTML = "<span style=\"font-size:larger;\">🛈</span><br/>16🖒 4🖓";
+                $(this)[0].innerHTML = "<span style=\"font-size:larger; color:blue;\">🛈</span><br/>16🖒 4🖓";
             });
             
             function gen(cat,hs,n) {
